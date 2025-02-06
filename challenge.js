@@ -12,8 +12,21 @@ function reversed(str) {
     // } same as above will get some result
     return reverse;
 }
-
 console.log(reversed('my friend'));
 
+// paradrom challenge
+
+function paradrom(str) {
+    let parad = '';
+    for (let char of str) {
+        parad = char + parad;
+    }
+    if (str == parad) {
+        return true;
+    }
+    
+    return false;
+}
+console.log(paradrom('madam'));
 
 
