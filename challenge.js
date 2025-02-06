@@ -37,12 +37,8 @@ function maxchar(str) {
     let machar = '';
 
     for (let char of str) {
-        if (charmap[char]) {
-            charmap[char] = charmap[char] + 1;
-        }
-        else {
-            charmap[char] = 1;
-        }
+     charmap[char] = ++charmap[char] ||1;
+       
         
     }
 
@@ -57,4 +53,18 @@ function maxchar(str) {
 }
 console.log(maxchar('aaaassssssssssssssssbbbbbbbbbbbbbbbhhhhhhhhhhhhhhhhh'));
 
+// given an array and chunk size, divide the array into many subarrays where each subarray is of length size
+// chunk([1, 2, 3, 4, 5, 6, 7, 8, 9], 3);
+
+function chunk(arry, size) {
+    const chunked = [];
+    let index = 0;
+    while (index < arry.length) {
+       chunked.push(arry.slice(index, index + size));
+        index = index + size;
+    }
+    return chunked;
+}
+
+console.log(chunk([1,2,3,4,5,6,7,8,9], 3));
 
