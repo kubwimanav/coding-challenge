@@ -87,3 +87,7 @@ function division (num1, num2) {
 }
 
 console.log(division(10, 2));
+
+let text = "       Hello World!        ";
+let result = text.trim();
+console.log(result);

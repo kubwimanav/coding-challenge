@@ -25,3 +25,6 @@ console.log(array);
 
 let cities = ['lagos', 'abuja', 'kano'];
 console.log(cities);
+
+
+
