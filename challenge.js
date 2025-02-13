@@ -91,3 +91,26 @@ console.log(division(10, 2));
 let text = "       Hello World!        ";
 let result = text.trim();
 console.log(result);
+
+// fizzbuzz challenge
+
+function fizzbuzz(num) {
+    for (let i = 1; i <= num; i++){
+        if (i % 3 === 0 && i % 5 === 0) {
+            console.log('fizzbuzz');
+            
+        }
+        else if (i % 3 === 0) {
+            console.log('fizz');
+            
+        }
+        else if (i % 5 === 0) {
+            console.log('buzz');
+            
+        }
+        else {
+            console.log(i);
+        }
+    }
+}
+fizzbuzz(30);
