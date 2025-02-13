@@ -26,5 +26,14 @@ console.log(array);
 let cities = ['lagos', 'abuja', 'kano'];
 console.log(cities);
 
+let arr = [2, 1, 3, 4, 5, 6, 7, 8, 9];
+let minal =array[0]
+for (let i = 0; i<minal; i++){
+    if (array[i] < minal){
+        minal = arr[i];
+    }
+    console.log(minal);
+    
+}
 
 
