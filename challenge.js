@@ -134,3 +134,35 @@ function diplay(n) {
     }  
 }
 diplay(5);
+
+// reverse of words
+
+function reversewords(str) {
+    return str.trim().split(/\s+/).reverse().join(' ');
+}
+console.log(reversewords("the sky is blue"));
+
+// revesrse vowels
+
+function reverseVowels(s) {
+  const vowels = new Set(["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]);
+  let chars = s.split("");
+  let left = 0,
+    right = s.length - 1;
+
+  while (left < right) {
+    while (left < right && !vowels.has(chars[left])) {
+      left++;
+    }
+    while (left < right && !vowels.has(chars[right])) {
+      right--;
+    }
+    [chars[left], chars[right]] = [chars[right], chars[left]];
+    left++;
+    right--;
+  }
+
+  return chars.join("");
+}
+console.log(reverseVowels("IceCreAm"));
+console.log(reverseVowels("leetcode")); 
