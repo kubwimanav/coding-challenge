@@ -197,3 +197,62 @@ console.log(mergeAlternately("abcd", "pq"));   // Output: "apbqcd"
 
 // Here is the JavaScript solution for finding the largest string that divides both str1 and str2:
 
+function gcdOfStrings(str1, str2) {
+    // Helper function to check if str can be formed by repeating pattern
+    const isDivisible = (str, pattern) => {
+        return str === pattern.repeat(str.length / pattern.length);
+    };
+
+    // Find the greatest common divisor (GCD) of two numbers
+    const gcd = (a, b) => b === 0 ? a : gcd(b, a % b);
+
+    // Calculate the GCD length of the two strings
+    const gcdLength = gcd(str1.length, str2.length);
+    const candidate = str1.substring(0, gcdLength);
+
+    // Check if the candidate divides both strings
+    if (isDivisible(str1, candidate) && isDivisible(str2, candidate)) {
+        return candidate;
+    }
+    
+    return '';
+}
+
+// Test cases
+console.log(gcdOfStrings("ABCABC", "ABC"));    // Output: "ABC"
+console.log(gcdOfStrings("ABABAB", "ABAB"));   // Output: "AB"
+console.log(gcdOfStrings("LEET", "CODE"));     // Output: ""
+
+// Here is the JavaScript solution for determining if each kid can have the greatest number of candies after receiving the extra candies:
+function kidsWithCandies(candies, extraCandies) {
+    // Find the maximum number of candies among all the kids
+    const maxCandies = Math.max(...candies);
+    
+    // Check if each kid can have the greatest number of candies
+    return candies.map(candy => candy + extraCandies >= maxCandies);
+}
+
+// Test cases
+console.log(kidsWithCandies([2, 3, 5, 1, 3], 3)); 
+console.log(kidsWithCandies([4, 2, 1, 1, 2], 1));  
+console.log(kidsWithCandies([12, 1, 12], 10));      
+
+
+// Here is the JavaScript solution to find distinct integers in nums1 not present in nums2, and vice versa:
+
+function findDifference(nums1, nums2) {
+    // Convert arrays to sets to remove duplicates and allow fast lookups
+    const set1 = new Set(nums1);
+    const set2 = new Set(nums2);
+
+    // Find elements in nums1 not in nums2
+    const diff1 = [...set1].filter(num => !set2.has(num));
+
+    // Find elements in nums2 not in nums1
+    const diff2 = [...set2].filter(num => !set1.has(num));
+
+    return [diff1, diff2];
+}
+
+// Test cases
+console.log(findDifference([1, 2, 3], [2, 4, 6]));   // Output: [[1, 3], [4, 6]]
