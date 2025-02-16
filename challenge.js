@@ -256,3 +256,42 @@ function findDifference(nums1, nums2) {
 
 // Test cases
 console.log(findDifference([1, 2, 3], [2, 4, 6]));   // Output: [[1, 3], [4, 6]]
+
+
+// Here is the JavaScript solution to compress the array of characters in-place:
+
+function compress(chars) {
+    let write = 0;  // Pointer to write the compressed characters
+    let read = 0;   // Pointer to read through the array
+    
+    while (read < chars.length) {
+        const currentChar = chars[read];
+        let count = 0;
+        
+        // Count the number of consecutive repeating characters
+        while (read < chars.length && chars[read] === currentChar) {
+            read++;
+            count++;
+        }
+        
+        // Write the character
+        chars[write] = currentChar;
+        write++;
+        
+        // If the count is more than 1, write the count as well
+        if (count > 1) {
+            for (let digit of String(count)) {
+                chars[write] = digit;
+                write++;
+            }
+        }
+    }
+    
+    // Return the new length of the array
+    return write;
+}
+
+// Test cases
+let chars1 = ["a", "a", "b", "b", "c", "c", "c"];
+console.log(compress(chars1));  // Output: 6
+console.log(chars1.slice(0, 6));  // Output: ["a","2","b","2","c","3"]
