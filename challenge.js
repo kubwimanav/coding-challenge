@@ -166,3 +166,34 @@ function reverseVowels(s) {
 }
 console.log(reverseVowels("IceCreAm"));
 console.log(reverseVowels("leetcode")); 
+
+// merging words
+
+function mergeAlternately(word1, word2) {
+    let merged = '';
+    let i = 0, j = 0;
+    
+    // Merge letters in alternating order
+    while (i < word1.length && j < word2.length) {
+        merged += word1[i];
+        merged += word2[j];
+        i++;
+        j++;
+    }
+    
+    // Append the remaining letters, if any
+    merged += word1.slice(i);
+    merged += word2.slice(j);
+    
+    return merged;
+}
+
+// Test cases
+console.log(mergeAlternately("abc", "pqr"));   // Output: "apbqcr"
+console.log(mergeAlternately("ab", "pqrs"));   // Output: "apbqrs"
+console.log(mergeAlternately("abcd", "pq"));   // Output: "apbqcd"
+
+
+
+// Here is the JavaScript solution for finding the largest string that divides both str1 and str2:
+
