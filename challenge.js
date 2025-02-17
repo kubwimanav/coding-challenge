@@ -315,3 +315,62 @@ function removeStars(s) {
 
 // Test cases
 console.log(removeStars("leet**cod*e")); // Output: "lecoe"
+
+
+
+// To find the contiguous subarray of length 𝑘 with the maximum average,
+
+function findMaxAverage(nums, k) {
+    // Calculate the sum of the first window of length k
+    let maxSum = 0;
+    for (let i = 0; i < k; i++) {
+        maxSum += nums[i];
+    }
+    
+    // Initialize the current sum as the maxSum
+    let currentSum = maxSum;
+    
+    // Slide the window over the array
+    for (let i = k; i < nums.length; i++) {
+        currentSum += nums[i] - nums[i - k]; // Slide the window
+        maxSum = Math.max(maxSum, currentSum); // Track the maximum sum
+    }
+    
+    // Return the maximum average
+    return maxSum / k;
+}
+
+// Test cases
+console.log(findMaxAverage([1,12,-5,-6,50,3], 4)); // Output: 12.75000
+console.log(findMaxAverage([5], 1));               // Output: 5.00000
+
+
+
+
+// remove zeroes
+
+function moveZeroes(nums) {
+    let nonZeroIndex = 0;
+    
+    // Move non-zero elements to the front
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] !== 0) {
+            nums[nonZeroIndex] = nums[i];
+            nonZeroIndex++;
+        }
+    }
+    
+    // Fill the rest with zeros
+    for (let i = nonZeroIndex; i < nums.length; i++) {
+        nums[i] = 0;
+    }
+}
+
+// Test cases
+let nums1 = [0, 1, 0, 3, 12];
+moveZeroes(nums1);
+console.log(nums1); // Output: [1, 3, 12, 0, 0]
+
+let nums2 = [0];
+moveZeroes(nums2);
+console.log(nums2); // Output: [0]
