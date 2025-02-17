@@ -295,3 +295,23 @@ function compress(chars) {
 let chars1 = ["a", "a", "b", "b", "c", "c", "c"];
 console.log(compress(chars1));  // Output: 6
 console.log(chars1.slice(0, 6));  // Output: ["a","2","b","2","c","3"]
+
+
+// remove stars in string
+
+function removeStars(s) {
+    const stack = [];
+    
+    for (const char of s) {
+        if (char === '*') {
+            stack.pop(); // Remove the closest non-star character
+        } else {
+            stack.push(char);
+        }
+    }
+    
+    return stack.join('');
+}
+
+// Test cases
+console.log(removeStars("leet**cod*e")); // Output: "lecoe"
