@@ -387,9 +387,12 @@ console.log(rotateString("abcde", "cdeab")); // Output: true
 console.log(rotateString("abcde", "abced")); // Output: false
 
 
-// 
+// Given an integer array of size n,
+// find all elements that appear more than ⌊ n/3 ⌋ times.
+
 function majorityElement(nums) {
   // There can be at most 2 elements that appear more than n/3 times.
+  
   let candidate1 = null, candidate2 = null;
   let count1 = 0, count2 = 0;
   
