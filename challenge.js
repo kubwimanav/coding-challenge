@@ -374,3 +374,14 @@ console.log(nums1); // Output: [1, 3, 12, 0, 0]
 let nums2 = [0];
 moveZeroes(nums2);
 console.log(nums2); // Output: [0]
+
+// You can solve this problem by checking if goal is a substring of s + s.
+//  If s can be rotated to become goal, then goal must be present in s + s
+function rotateString(s, goal) {
+  if (s.length !== goal.length) return false;
+  return (s + s).includes(goal);
+}
+
+// Test cases
+console.log(rotateString("abcde", "cdeab")); // Output: true
+console.log(rotateString("abcde", "abced")); // Output: false
