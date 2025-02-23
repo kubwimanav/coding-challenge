@@ -385,3 +385,50 @@ function rotateString(s, goal) {
 // Test cases
 console.log(rotateString("abcde", "cdeab")); // Output: true
 console.log(rotateString("abcde", "abced")); // Output: false
+
+
+// 
+function majorityElement(nums) {
+  // There can be at most 2 elements that appear more than n/3 times.
+  let candidate1 = null, candidate2 = null;
+  let count1 = 0, count2 = 0;
+  
+  // First pass: find potential candidates.
+  for (const num of nums) {
+    if (candidate1 !== null && num === candidate1) {
+      count1++;
+    } else if (candidate2 !== null && num === candidate2) {
+      count2++;
+    } else if (count1 === 0) {
+      candidate1 = num;
+      count1 = 1;
+    } else if (count2 === 0) {
+      candidate2 = num;
+      count2 = 1;
+    } else {
+      count1--;
+      count2--;
+    }
+  }
+  
+  // Second pass: verify the candidates.
+  count1 = 0;
+  count2 = 0;
+  for (const num of nums) {
+    if (num === candidate1) count1++;
+    if (num === candidate2) count2++;
+  }
+  
+  const result = [];
+  const n = nums.length;
+  if (count1 > Math.floor(n / 3)) result.push(candidate1);
+  // Ensure candidate2 is distinct from candidate1.
+  if (candidate2 !== candidate1 && count2 > Math.floor(n / 3)) result.push(candidate2);
+  
+  return result;
+}
+
+// Test cases
+console.log(majorityElement([3, 2, 3]));    // Output: [3]
+console.log(majorityElement([1]));          // Output: [1]
+console.log(majorityElement([1, 2]));       // Output: [1,2]
